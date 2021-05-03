@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             RichText(
               text: TwemojiTextSpan(
-                text: '1Text 🍕🍔🌭🍿🧂🥓🥨🥐🍞🥞🥞    🧇🧀🍗  🥩🍚 🍜 🥟',
+                text: 'Text 🍕🍔🌭🍿🧂🥓🥨🥐🍞🥞🥞',
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),

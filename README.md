@@ -1,14 +1,21 @@
 # twemoji
 
-A new Flutter package project.
+Twitter Emojis for Flutter
 
-## Getting Started
+## Usage
 
-This project is a starting point for a Dart
-[package](https://flutter.dev/developing-packages/),
-a library module containing code that can be shared easily across
-multiple Flutter or Dart projects.
+Just wrap **TwemojiTextSpan** with **RichText** and it will render the twitter Emojies
+```dart
+ RichText(
+              text: TwemojiTextSpan(
+                text: 'Text 🍕🍔🌭🍿🧂🥓🥨🥐🍞🥞🥞',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
+```
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.dev/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+
+**Screenshot**
+
+
+<img width="300px" alt="Demo" src="art/1.png"/>  

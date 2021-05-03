@@ -11,7 +11,8 @@ class TwemojiTextSpan extends TextSpan {
     GestureRecognizer? recognizer,
   }) : super(
             style: style,
-            children: _parse(style!, text)..addAll(children ?? []),
+            children: _parse(style ?? TextStyle(), text)
+              ..addAll(children ?? []),
             recognizer: recognizer);
 
   static List<InlineSpan> _parse(TextStyle style, String text) {
