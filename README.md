@@ -25,6 +25,8 @@ Just wrap **TwemojiTextSpan** with **RichText** and it will render the twitter E
 **TODO**
 - [ ] Add SVG support
 - [ ] Extend Textfield widget to support twemoji
+- [ ] Find a way to get an emoji code. For example: 😀 => "1F600"
+
 
 
 **About**
