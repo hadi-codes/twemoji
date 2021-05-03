@@ -18,4 +18,10 @@ Just wrap **TwemojiTextSpan** with **RichText** and it will render the twitter E
 **Screenshot**
 
 
-<img width="300px" alt="Demo" src="art/1.png"/>  
+<img width="300px" alt="Demo" src="https://github.com/bigblackclock/twemoji/raw/master/art/1.png"/>  
+
+
+
+**TODO**
+- [ ] Add SVG support
+- [ ] Extend Textfield widget to support twemoji
