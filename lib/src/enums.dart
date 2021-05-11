@@ -1,0 +1,1 @@
+enum TwemojiFormat { svg, png }
