@@ -7,9 +7,9 @@ class TwemojiText extends StatelessWidget {
       {Key? key,
       required this.text,
       this.style,
-      this.emojiFontMultiplier,
-      this.twemojiFormat,
-      this.maxLines})
+      this.maxLines,
+      this.emojiFontMultiplier = 1.0,
+      this.twemojiFormat})
       : super(key: key);
 
   /// The Text
@@ -19,7 +19,7 @@ class TwemojiText extends StatelessWidget {
   final TextStyle? style;
 
   /// Multiplie the emoji size, by default it's 1
-  final double? emojiFontMultiplier;
+  final double emojiFontMultiplier;
 
   /// Maximal lines to be rendered
   final int? maxLines;
@@ -31,11 +31,12 @@ class TwemojiText extends StatelessWidget {
   final TwemojiFormat? twemojiFormat;
   @override
   Widget build(BuildContext context) => RichText(
-      text: TwemojiTextSpan(
-        text: text,
-        emojiFontMultiplier: emojiFontMultiplier!,
-        twemojiFormat: twemojiFormat,
-        style: style,
-      ),
-      maxLines: maxLines);
+        text: TwemojiTextSpan(
+          text: text,
+          emojiFontMultiplier: emojiFontMultiplier,
+          twemojiFormat: twemojiFormat,
+          style: style,
+        ),
+        maxLines: maxLines,
+      );
 }
