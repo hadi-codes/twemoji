@@ -1,3 +1,7 @@
+# 0.3.0
+
+Add support for only including specified emojis
+
 # 0.2.1
 Updated README
 # 0.2.0

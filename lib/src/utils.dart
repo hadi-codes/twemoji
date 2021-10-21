@@ -1,16 +1,3 @@
-import 'package:flutter/foundation.dart';
-import 'package:twemoji/twemoji.dart';
-
-/// Will always return [TwemojiFormat.svg] unless flutter web html renderer
-TwemojiFormat getTwemojiFormat() {
-  const isSkia = bool.fromEnvironment('FLUTTER_WEB_USE_SKIA');
-  if (kIsWeb && !isSkia) {
-    return TwemojiFormat.png;
-  } else {
-    return TwemojiFormat.svg;
-  }
-}
-
 /// Converts emoji to unicode 😀 => "1F600"
 String emojiToUnicode(String input) {
   if (input.length == 1) {
