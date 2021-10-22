@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:characters/src/extensions.dart';
 import 'package:io/io.dart';
+import 'package:path/path.dart' as path;
 import 'package:twemoji/src/utils.dart';
 import 'package:yaml/yaml.dart';
 
@@ -11,36 +12,44 @@ Future<void> main(List<String> args) async {
   // Navigate to the .dart_tool directory and read the path of the twemoji
   // script from the package_config. The script will live in:
   // .dart_tool/pub/bin/twemoji/script so we need to walk up 4 directories.
-  final packageDirectory =
+  final packageConfigDirectory =
       Directory(Platform.script.toFilePath()).parent.parent.parent.parent;
 
   final packageConfigFile =
-      File('${packageDirectory.path}/package_config.json');
+      File('${packageConfigDirectory.path}/package_config.json');
+
   final packageConfigStr = packageConfigFile.readAsStringSync();
   final packageConfigJson = jsonDecode(packageConfigStr);
 
   final List packages = packageConfigJson['packages'];
-  final Map? twemojiPackage =
+  final Map? twemojiPackageConfig =
       packages.firstWhere((package) => package['name'] == 'twemoji');
 
-  if (twemojiPackage == null) {
+  if (twemojiPackageConfig == null) {
     print('Could not find twemoji package');
     exit(0);
   }
 
-  final twemojiPackagePath = twemojiPackage['rootUri'];
+  final String twemojiPackageRootUri = twemojiPackageConfig['rootUri'];
+  final twemojiPackagePath = twemojiPackageRootUri.replaceFirst('file://', '');
+  final twemojiPackageAbsolutePath = path.isRelative(twemojiPackagePath)
+      ? path.normalize(
+          path.join(
+            packageConfigDirectory.path,
+            twemojiPackagePath,
+          ),
+        )
+      : twemojiPackagePath;
 
   final pubspecFile = File('${Directory.current.path}/pubspec.yaml');
+
   final pubspecYamlStr = pubspecFile.readAsStringSync();
   final pubspecYaml = loadYaml(pubspecYamlStr);
 
   final String? includedEmojis = (pubspecYaml['twemoji'] ?? {})['includes'];
 
-  // Ideally there'd be a way to get the directory to not include this prefix.
-  final rootPath = twemojiPackagePath.replaceFirst('file://', '');
-
-  final assetsPath = '$rootPath/assets';
-  final allAssetsPath = '$rootPath/all_assets';
+  final assetsPath = '$twemojiPackageAbsolutePath/assets';
+  final allAssetsPath = '$twemojiPackageAbsolutePath/all_assets';
 
   final allAssetsDirectory = Directory(allAssetsPath);
 
