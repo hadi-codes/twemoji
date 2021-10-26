@@ -1,3 +1,5 @@
+# 0.3.0
+Add support for only including specified emojis
 # 0.2.3
 updated flutter_svg to ^0.23.0+1
 # 0.2.2
