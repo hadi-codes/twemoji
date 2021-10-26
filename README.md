@@ -33,6 +33,17 @@ RichText(
 )
 ```
 
+## Including specific emojis
+
+By default the library includes support for all emojis. To reduce bundle size and only build the emojis your application requires, specify a list of them in your `pubspec.yaml`:
+
+```dart
+twemoji:
+  includes: '👩‍👩‍👧‍👧👏👍'
+```
+
+Then call `flutter pub run twemoji:include_emojis` to have it filter down the list of emojis to generate assets for.
+
 **Screenshot**
 
 <img width="300px" alt="Demo" src="https://github.com/bigblackclock/twemoji/raw/master/art/2.png"/>
