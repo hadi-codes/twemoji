@@ -8,7 +8,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  characters: ^1.2.0
+  characters: ^1.1.0
   flutter:
     sdk: flutter
   flutter_svg: ^0.23.0+1
