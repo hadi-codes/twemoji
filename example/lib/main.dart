@@ -75,6 +75,15 @@ class _MyHomePageState extends State<MyHomePage>
                         fontSize: 20,
                       ),
                     ),
+                    TwemojiTextSpan(
+                      text: '🍕🍔🌭👩‍🍳 :Twemoji.networkSvg x 1.5\n',
+                      twemojiFormat: TwemojiFormat.networkSvg,
+                      emojiFontMultiplier: 1.5,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                      ),
+                    ),
                   ],
                 ),
               ),

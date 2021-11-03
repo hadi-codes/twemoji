@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:twemoji/twemoji.dart';
 
-/// Will always return [TwemojiFormat.svg] unless flutter web html renderer
+/// Will always return or[TwemojiFormat.svg]
+/// on flutter web html renderer will return [TwemojiFormat.png]
 TwemojiFormat getTwemojiFormat() {
   const isSkia = bool.fromEnvironment('FLUTTER_WEB_USE_SKIA');
   if (kIsWeb && !isSkia) {
@@ -57,7 +58,6 @@ class Twemoji extends StatelessWidget {
       onMatch: (m) => cleanEmoji = m.input.substring(m.start, m.end),
     );
     final unicode = emojiToUnicode(cleanEmoji);
-    print(unicode);
     if (unicode == '') {
       return const SizedBox.shrink();
     }
@@ -77,6 +77,13 @@ class Twemoji extends StatelessWidget {
           width: width,
           fit: fit ?? BoxFit.contain,
           package: 'twemoji',
+        );
+      case TwemojiFormat.networkSvg:
+        return SvgPicture.network(
+          'https://abs.twimg.com/emoji/v2/svg/$unicode.svg',
+          height: height,
+          width: width,
+          fit: fit ?? BoxFit.contain,
         );
     }
   }

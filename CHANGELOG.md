@@ -1,3 +1,5 @@
+# 0.3.1
+Add support network svg
 # 0.3.0
 Add support for only including specified emojis
 # 0.2.3
