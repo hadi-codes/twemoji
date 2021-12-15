@@ -48,9 +48,6 @@ Then call `flutter pub run twemoji:include_emojis` to have it filter down the li
 
 <img width="300px" alt="Demo" src="https://github.com/bigblackclock/twemoji/raw/master/art/2.png"/>
 
-**Limitation**
-The svg emojis will not work on flutter html web renderer because the
-[flutter_svg](https://pub.dev/packages/flutter_svg "flutter_svg") package does not support it
 
 **TODO**
 
