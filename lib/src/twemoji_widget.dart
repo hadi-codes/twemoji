@@ -1,34 +1,20 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:twemoji/twemoji.dart';
-
-/// Will always return or[TwemojiFormat.svg]
-/// on flutter web html renderer will return [TwemojiFormat.png]
-TwemojiFormat getTwemojiFormat() {
-  const isSkia = bool.fromEnvironment('FLUTTER_WEB_USE_SKIA');
-  if (kIsWeb && !isSkia) {
-    return TwemojiFormat.png;
-  } else {
-    return TwemojiFormat.svg;
-  }
-}
 
 /// returns an image of an emoji
 ///
 /// The format of the emoji image it can be [TwemojiFormat.png]
 /// 72*72 png or [TwemojiFormat.svg] svg by default.
-///
-/// Note: svg does'nt works on Flutter html web renderer
 class Twemoji extends StatelessWidget {
-  const Twemoji(
-      {Key? key,
-      required this.emoji,
-      this.height,
-      this.width,
-      this.twemojiFormat,
-      this.fit})
-      : super(key: key);
+  const Twemoji({
+    Key? key,
+    required this.emoji,
+    this.height,
+    this.width,
+    this.twemojiFormat = TwemojiFormat.svg,
+    this.fit,
+  }) : super(key: key);
 
   /// The emoji string
   ///
@@ -48,10 +34,9 @@ class Twemoji extends StatelessWidget {
   /// 72*72 png or [TwemojiFormat.svg] svg by default.
   ///
   /// Note: svg does'nt works on Flutter html web renderer
-  final TwemojiFormat? twemojiFormat;
+  final TwemojiFormat twemojiFormat;
   @override
   Widget build(BuildContext context) {
-    final _twemojiFormat = twemojiFormat ?? getTwemojiFormat();
     var cleanEmoji = '';
     emoji.splitMapJoin(
       regex,
@@ -61,7 +46,7 @@ class Twemoji extends StatelessWidget {
     if (unicode == '') {
       return const SizedBox.shrink();
     }
-    switch (_twemojiFormat) {
+    switch (twemojiFormat) {
       case TwemojiFormat.png:
         return Image.asset(
           'assets/png/$unicode.png',

@@ -73,3 +73,6 @@ build/
 !**/ios/**/default.mode2v3
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
+example/.fvm/fvm_config.json
+example/.fvm/flutter_sdk
+.vscode/settings.json

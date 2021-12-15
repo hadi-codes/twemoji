@@ -1,3 +1,7 @@
+# 0.4.0
+updated flutter_svg to ^1.0.0
+
+
 # 0.3.1
 Add support network svg
 # 0.3.0

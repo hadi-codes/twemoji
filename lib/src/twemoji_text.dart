@@ -3,14 +3,14 @@ import 'package:twemoji/src/src.dart';
 
 /// returns a widget with rendered text with twitter emojis
 class TwemojiText extends StatelessWidget {
-  const TwemojiText(
-      {Key? key,
-      required this.text,
-      this.style,
-      this.maxLines,
-      this.emojiFontMultiplier = 1.0,
-      this.twemojiFormat})
-      : super(key: key);
+  const TwemojiText({
+    Key? key,
+    required this.text,
+    this.style,
+    this.maxLines,
+    this.emojiFontMultiplier = 1.0,
+    this.twemojiFormat = TwemojiFormat.svg,
+  }) : super(key: key);
 
   /// The Text
   final String text;
@@ -26,9 +26,7 @@ class TwemojiText extends StatelessWidget {
 
   /// The format of the emoji image it can be [TwemojiFormat.png]
   /// 72*72 png or [TwemojiFormat.svg] svg by default.
-  ///
-  /// Note: svg does'nt works on Flutter html web renderer
-  final TwemojiFormat? twemojiFormat;
+  final TwemojiFormat twemojiFormat;
   @override
   Widget build(BuildContext context) => RichText(
         text: TwemojiTextSpan(
