@@ -1,3 +1,5 @@
+# 0.4.1
+fix lint problem
 # 0.4.0
 updated flutter_svg to ^1.0.0
 
