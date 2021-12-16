@@ -1,3 +1,6 @@
+# 0.4.2
+downgraded characters to ^1.1.0
+
 # 0.4.1
 fix lint problem
 # 0.4.0
