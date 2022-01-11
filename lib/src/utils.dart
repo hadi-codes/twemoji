@@ -1,7 +1,7 @@
 /// Converts emoji to unicode 😀 => "1F600"
 String emojiToUnicode(String input) {
   if (input.length == 1) {
-    return input.codeUnits.first.toString();
+    return input.codeUnits.first.toRadixString(16);
   } else if (input.length > 1) {
     final pairs = <int>[];
     for (var i = 0; i < input.length; i++) {
