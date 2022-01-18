@@ -42,7 +42,8 @@ class Twemoji extends StatelessWidget {
       regex,
       onMatch: (m) => cleanEmoji = m.input.substring(m.start, m.end),
     );
-    final unicode = emojiToUnicode(cleanEmoji);
+    final unicode = emojiToUnicode(cleanEmoji)
+        .replaceAll(RegExp('-fe0f-20e3'), '-20e3');
     if (unicode == '') {
       return const SizedBox.shrink();
     }

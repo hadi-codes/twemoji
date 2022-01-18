@@ -52,14 +52,14 @@ class _MyHomePageState extends State<MyHomePage>
                 text: TextSpan(
                   children: [
                     const TextSpan(
-                      text: '🍕🍔🌭👩‍🍳✈ :Device\n',
+                      text: '🍕🍔🌭👩‍🍳✈0️⃣ :Device\n',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 20,
                       ),
                     ),
                     TwemojiTextSpan(
-                      text: '🍕🍔🌭👩‍🍳✈ :Twemoji.png\n',
+                      text: '🍕🍔🌭👩‍🍳✈0️⃣ :Twemoji.png\n',
                       twemojiFormat: TwemojiFormat.png,
                       style: const TextStyle(
                         color: Colors.black,
@@ -67,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage>
                       ),
                     ),
                     TwemojiTextSpan(
-                      text: '🍕🍔🌭👩‍🍳✈ :Twemoji.svg x 1.3\n',
+                      text: '🍕🍔🌭👩‍🍳✈0️⃣ :Twemoji.svg x 1.3\n',
                       twemojiFormat: TwemojiFormat.svg,
                       emojiFontMultiplier: 1.3,
                       style: const TextStyle(
@@ -76,7 +76,7 @@ class _MyHomePageState extends State<MyHomePage>
                       ),
                     ),
                     TwemojiTextSpan(
-                      text: '🍕🍔🌭👩‍🍳✈ :Twemoji.networkSvg x 1.5\n',
+                      text: '🍕🍔🌭👩‍🍳✈0️⃣ :Twemoji.networkSvg x 1.5\n',
                       twemojiFormat: TwemojiFormat.networkSvg,
                       emojiFontMultiplier: 1.5,
                       style: const TextStyle(
@@ -88,7 +88,7 @@ class _MyHomePageState extends State<MyHomePage>
                 ),
               ),
               const TwemojiText(
-                text: '💻👩‍💻👨‍💻✈ :auto format',
+                text: '💻👩‍💻👨‍💻✈0️⃣ :auto format',
                 emojiFontMultiplier: 2,
               ),
               const SizedBox(height: 20),
