@@ -1,3 +1,7 @@
+# 0.4.3
+- updated emoji regex
+- improved emojiToUnicode method
+- updated example
 # 0.4.2
 downgraded characters to ^1.1.0
 
