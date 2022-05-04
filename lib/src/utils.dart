@@ -1,27 +1,29 @@
-/// Converts emoji to unicode 😀 => "1F600"
-String emojiToUnicode(String input) {
-  if (input.length == 1) {
-    return input.codeUnits.first.toString();
-  } else if (input.length > 1) {
-    final pairs = <int>[];
-    for (var i = 0; i < input.length; i++) {
-      if (
-          // high surrogate
-          input.codeUnits[i] >= 0xd800 && input.codeUnits[i] <= 0xdbff) {
-        if (input.codeUnits[i + 1] >= 0xdc00 &&
-            input.codeUnits[i + 1] <= 0xdfff) {
-          // low surrogate
-          pairs.add((input.codeUnits[i] - 0xd800) * 0x400 +
-              (input.codeUnits[i + 1] - 0xdc00) +
-              0x10000);
-        }
-      } else if (input.codeUnits[i] < 0xd800 || input.codeUnits[i] > 0xdfff) {
-        // modifiers and joiners
-        pairs.add(input.codeUnitAt(i));
-      }
-    }
-    return pairs.map((e) => e.toRadixString(16)).toList().join('-');
-  }
+// ignore_for_file: prefer_final_locals
 
-  return '';
+final _u200D = String.fromCharCode(0x200D);
+
+final _uFE0Fg = RegExp(
+  r'\uFE0F',
+  unicode: true,
+);
+
+/// Converts emoji to unicode 😀 => "1F600"
+String emojiToUnicode(String rawText) => _toCodePoint(
+      !rawText.contains(_u200D) ? rawText.replaceAll(_uFE0Fg, '') : rawText,
+    );
+
+String _toCodePoint(String input, {String sep = '-'}) {
+  var r = [], c = 0, p = 0, i = 0;
+  while (i < input.length) {
+    c = input.codeUnitAt(i++);
+    if (p != 0) {
+      r.add((0x10000 + ((p - 0xD800) << 10) + (c - 0xDC00)).toRadixString(16));
+      p = 0;
+    } else if (0xD800 <= c && c <= 0xDBFF) {
+      p = c;
+    } else {
+      r.add(c.toRadixString(16));
+    }
+  }
+  return r.join(sep);
 }

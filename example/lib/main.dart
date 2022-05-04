@@ -29,6 +29,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
+  final _emojis = '☺️ 🍕 🍔 🌭 👩‍🍳 ✈️ 0️⃣ 1️⃣ 2️⃣ 3️⃣';
 
   @override
   void initState() {
@@ -51,15 +52,16 @@ class _MyHomePageState extends State<MyHomePage>
               RichText(
                 text: TextSpan(
                   children: [
-                    const TextSpan(
-                      text: '🍕🍔🌭👩‍🍳 :Device\n',
-                      style: TextStyle(
+                     TextSpan(
+                      text: '$_emojis :Device\n',
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 20,
                       ),
                     ),
                     TwemojiTextSpan(
-                      text: '🍕🍔🌭👩‍🍳 :Twemoji.png\n',
+                      text:
+                          '$_emojis :Twemoji.png\n',
                       twemojiFormat: TwemojiFormat.png,
                       style: const TextStyle(
                         color: Colors.black,
@@ -67,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage>
                       ),
                     ),
                     TwemojiTextSpan(
-                      text: '🍕🍔🌭👩‍🍳 :Twemoji.svg x 1.3\n',
+                      text: '$_emojis :Twemoji.svg x 1.3\n',
                       twemojiFormat: TwemojiFormat.svg,
                       emojiFontMultiplier: 1.3,
                       style: const TextStyle(
@@ -76,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage>
                       ),
                     ),
                     TwemojiTextSpan(
-                      text: '🍕🍔🌭👩‍🍳 :Twemoji.networkSvg x 1.5\n',
+                      text: '$_emojis  :Twemoji.networkSvg x 1.5\n',
                       twemojiFormat: TwemojiFormat.networkSvg,
                       emojiFontMultiplier: 1.5,
                       style: const TextStyle(
