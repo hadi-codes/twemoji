@@ -1,21 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:twemoji/twemoji.dart';
+import 'package:twemoji_v2/twemoji.dart';
 
 /// returns an image of an emoji
 ///
 /// The format of the emoji image it can be [TwemojiFormat.png]
 /// 72*72 png or [TwemojiFormat.svg] svg by default.
 class Twemoji extends StatelessWidget {
-  const Twemoji({
-    Key? key,
-    required this.emoji,
-    this.height,
-    this.width,
-    this.twemojiFormat = TwemojiFormat.svg,
-    this.fit,
-  }) : super(key: key);
-
   /// The emoji string
   ///
   /// on passing a string with text and emojis it will show the last emoji
@@ -35,6 +26,16 @@ class Twemoji extends StatelessWidget {
   ///
   /// Note: svg does'nt works on Flutter html web renderer
   final TwemojiFormat twemojiFormat;
+
+  const Twemoji({
+    Key? key,
+    required this.emoji,
+    this.height,
+    this.width,
+    this.twemojiFormat = TwemojiFormat.svg,
+    this.fit,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     var cleanEmoji = '';
