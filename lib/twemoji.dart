@@ -1,4 +1,4 @@
-library twemoji_2;
+library twemoji_v2;
 
 export 'src/constants.dart';
 export 'src/twemoji_format.dart';
