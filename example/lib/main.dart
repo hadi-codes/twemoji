@@ -1,20 +1,22 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:twemoji/twemoji.dart';
+import 'package:twemoji_v2/twemoji.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
-// ignore: use_key_in_widget_constructors
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) => MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        debugShowCheckedModeBanner: false,
         home: const MyHomePage(),
       );
 }
@@ -29,12 +31,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-  final _emojis = '☺️ 🍕 🍔 🌭 👩‍🍳 ✈️ 0️⃣ 1️⃣ 2️⃣ 3️⃣';
+  final _emojis = '☺️ 🍕 🫥 🫠 👩‍🍳 ✈️ 0️⃣ 1️⃣ 2️⃣ 3️⃣';
 
   @override
   void initState() {
     super.initState();
-
     _controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 5))
           ..repeat();
@@ -48,49 +49,49 @@ class _MyHomePageState extends State<MyHomePage>
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+            children: [
               RichText(
                 text: TextSpan(
                   children: [
                      TextSpan(
-                      text: '$_emojis :Device\n',
+                      text: '$_emojis\nDefault Device Emoji\n\n',
                       style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 15,
                       ),
                     ),
                     TwemojiTextSpan(
                       text:
-                          '$_emojis :Twemoji.png\n',
+                          '$_emojis\nTwemojiFormat.png\n\n',
                       twemojiFormat: TwemojiFormat.png,
                       style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 15,
                       ),
                     ),
                     TwemojiTextSpan(
-                      text: '$_emojis :Twemoji.svg x 1.3\n',
+                      text: '$_emojis\nTwemojiFormat.svg (x1.3)\n\n',
                       twemojiFormat: TwemojiFormat.svg,
                       emojiFontMultiplier: 1.3,
                       style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 15,
                       ),
                     ),
                     TwemojiTextSpan(
-                      text: '$_emojis  :Twemoji.networkSvg x 1.5\n',
+                      text: '$_emojis\nTwemojiFormat.networkSvg (x1.5)\n\n',
                       twemojiFormat: TwemojiFormat.networkSvg,
                       emojiFontMultiplier: 1.5,
                       style: const TextStyle(
                         color: Colors.black,
-                        fontSize: 20,
+                        fontSize: 15,
                       ),
                     ),
                   ],
                 ),
               ),
               const TwemojiText(
-                text: '💻👩‍💻👨‍💻 :auto format',
+                text: '🫵👩‍💻👨‍💻 :auto format',
                 emojiFontMultiplier: 2,
               ),
               const SizedBox(height: 20),

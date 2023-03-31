@@ -1,28 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:twemoji_v2/twemoji.dart';
 
-import 'package:twemoji/twemoji.dart';
+import 'fitzpatrick_type.dart';
 
-/// The [TwemojiTextSpan] widget extends [TextSpan]
-/// widget and it can be used in a [RichText] widget
-/// and it also renders text with twitter emojis
+/// A [TextSpan] that renders emojis as twemojis.
 class TwemojiTextSpan extends TextSpan {
   TwemojiTextSpan({
-    TextStyle? style,
     required String text,
+    this.twemojiFormat = TwemojiFormat.svg,
+    this.fitzpatrickTypes = FitzpatrickType.values,
+    TextStyle? style,
     List<TextSpan>? children,
     double emojiFontMultiplier = 1,
-    this.twemojiFormat=TwemojiFormat.svg,
   }) : super(
           style: style,
-          children: _parse(style, text, twemojiFormat, emojiFontMultiplier)
+          children: _parse(style, text, twemojiFormat, fitzpatrickTypes, emojiFontMultiplier)
             ..addAll(children ?? []),
         );
 
+  /// The format of the emoji image it can be [TwemojiFormat.png]
+  /// 72*72 png or [TwemojiFormat.svg] svg by default.
   final TwemojiFormat twemojiFormat;
+
+  /// A list with allowed fitzpatrick types. This contains all types by default.
+  /// If an emoji uses a fitzpatrick type that is not in this list, it will
+  /// fall back to it's default, yellow, variation.
+  final List<FitzpatrickType> fitzpatrickTypes;
+
   static List<InlineSpan> _parse(
     TextStyle? _style,
     String text,
     TwemojiFormat twemojiFormat,
+    List<FitzpatrickType> fitzpatrickTypes,
     double emojiFontMultiplier,
   ) {
     final spans = <InlineSpan>[];
@@ -32,7 +41,7 @@ class TwemojiTextSpan extends TextSpan {
       fontSize: (textStyle.fontSize ?? 14) * emojiFontMultiplier,
     );
     text.splitMapJoin(
-      regex,
+      TwemojiUtils.emojiRegex,
       onMatch: (m) {
         final emojiStr = m.input.substring(m.start, m.end);
         spans.add(
@@ -44,6 +53,7 @@ class TwemojiTextSpan extends TextSpan {
                 child: Twemoji(
                   emoji: emojiStr,
                   twemojiFormat: twemojiFormat,
+                  fitzpatrickTypes: fitzpatrickTypes,
                   height: emojiStyle.fontSize,
                   width: emojiStyle.fontSize,
                 )),

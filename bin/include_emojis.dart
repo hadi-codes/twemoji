@@ -3,7 +3,7 @@
 import 'dart:io';
 import 'package:characters/src/extensions.dart';
 import 'package:io/io.dart';
-import 'package:twemoji/src/utils.dart';
+import 'package:twemoji_v2/twemoji.dart';
 import 'package:yaml/yaml.dart';
 
 Future<void> main(List<String> args) async {
@@ -63,7 +63,7 @@ Future<void> main(List<String> args) async {
   // and write the assets corresponding to the client's emojis into the svg and
   // png directories.
   for (final char in includedEmojis.characters) {
-    final unicodeStr = emojiToUnicode(char);
+    final unicodeStr = TwemojiUtils.toUnicode(char);
 
     if (unicodeStr.isNotEmpty) {
       copyEmojisFutures.addAll([

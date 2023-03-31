@@ -1,10 +1,15 @@
-# twemoji
+# twemoji_v2
+> Originally maintained by [hadi-codes](https://github.com/hadi-codes), extended to support the newest set of twemoji.
 
-Twitter Emojis for Flutter, this package supports svg and png 72x72 emojis
+[Twemoji](https://twemoji.twitter.com/) for Flutter, supports SVG and 72x72px PNG emojis
+
+Based on [jdecked's fork of twemoji (v14.1.2)](https://github.com/jdecked/twemoji)
+
+<img src="art/1.png" width=270>
 
 ## Usage
 
-**Twemoji** widget for a single emoji
+**Twemoji** to display single emojis
 
 ```dart
 Twemoji(
@@ -43,17 +48,3 @@ twemoji:
 ```
 
 Then call `flutter pub run twemoji:include_emojis` to have it filter down the list of emojis to generate assets for.
-
-**Screenshot**
-
-<img width="300px" alt="Demo" src="https://github.com/bigblackclock/twemoji/raw/master/art/2.png"/>
-
-
-**TODO**
-
--   [x] Add SVG support
--   [x] Find a way to get an emoji code. For example: 😀 => "1F600"
--   [ ] Extend Textfield widget to support twemoji
-
-**About**
-twemoji: https://twemoji.twitter.com/

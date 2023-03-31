@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:twemoji/twemoji.dart';
+import 'package:twemoji_v2/src/fitzpatrick_type.dart';
+import 'package:twemoji_v2/twemoji.dart';
 
 /// returns an image of an emoji
 ///
@@ -12,39 +13,49 @@ class Twemoji extends StatelessWidget {
     required this.emoji,
     this.height,
     this.width,
-    this.twemojiFormat = TwemojiFormat.svg,
     this.fit,
+    this.twemojiFormat = TwemojiFormat.svg,
+    this.fitzpatrickTypes = FitzpatrickType.values
   }) : super(key: key);
 
-  /// The emoji string
-  ///
-  /// on passing a string with text and emojis it will show the last emoji
-  /// in that string
+  /// The emoji as a string. When multiple emojis are passed, this will
+  /// simply just display the last one.
   final String emoji;
-  final double? height;
-  final double? width;
+
+  /// The dimensions for this emoji.
+  final double? height, width;
 
   /// How to inscribe the image into the space allocated during layout.
-  ///
   /// The default varies based on the other fields. See the discussion at
   /// [paintImage].
   final BoxFit? fit;
 
-  /// The format of the emoji image it can be [TwemojiFormat.png]
-  /// 72*72 png or [TwemojiFormat.svg] svg by default.
-  ///
-  /// Note: svg does'nt works on Flutter html web renderer
+  /// Specifies the way the twemojis get rendered. [TwemojiFormat.png] uses the
+  /// 72x72px PNG, while [TwemojiFormat.svg] uses the corresponding SVG.
   final TwemojiFormat twemojiFormat;
+
+  /// A list with allowed fitzpatrick types. This contains all types by default.
+  /// If an emoji uses a fitzpatrick type that is not in this list, it will
+  /// fall back to it's default, yellow, variation.
+  final List<FitzpatrickType> fitzpatrickTypes;
+
   @override
   Widget build(BuildContext context) {
     var cleanEmoji = '';
     emoji.splitMapJoin(
-      regex,
+      TwemojiUtils.emojiRegex,
       onMatch: (m) => cleanEmoji = m.input.substring(m.start, m.end),
     );
-    final unicode = emojiToUnicode(cleanEmoji);
+    var unicode = TwemojiUtils.toUnicode(cleanEmoji);
     if (unicode == '') {
       return const SizedBox.shrink();
+    }
+    if (TwemojiUtils.isFitzpatrick(unicode)) {
+      for (final type in FitzpatrickType.values) {
+        if (!fitzpatrickTypes.contains(type)) {
+          unicode = unicode.replaceAll('-${type.unicode}', '');
+        }
+      }
     }
     switch (twemojiFormat) {
       case TwemojiFormat.png:
@@ -53,7 +64,7 @@ class Twemoji extends StatelessWidget {
           fit: fit,
           height: width,
           width: height,
-          package: 'twemoji',
+          package: 'twemoji_v2',
         );
       case TwemojiFormat.svg:
         return SvgPicture.asset(
@@ -61,7 +72,7 @@ class Twemoji extends StatelessWidget {
           height: height,
           width: width,
           fit: fit ?? BoxFit.contain,
-          package: 'twemoji',
+          package: 'twemoji_v2',
         );
       case TwemojiFormat.networkSvg:
         return SvgPicture.network(
