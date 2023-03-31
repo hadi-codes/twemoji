@@ -1,6 +1,6 @@
 name: twemoji_v2
 description: Twemoji for Flutter based on Twemoji 14.1.2 - Supports SVG & 72x72px PNGs
-version: 0.5.0
+version: 0.5.1
 homepage: https://github.com/DynxstyGIT/twemoji_v2
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   characters: ^1.1.0
   flutter:
     sdk: flutter
-  flutter_svg: ^1.0.0
+  flutter_svg: ^2.0.4
   io: ^1.0.3
 
   path: ^1.8.0

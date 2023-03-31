@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage>
               RichText(
                 text: TextSpan(
                   children: [
-                     TextSpan(
+                    TextSpan(
                       text: '$_emojis\nDefault Device Emoji\n\n',
                       style: const TextStyle(
                         color: Colors.black,
@@ -61,8 +61,7 @@ class _MyHomePageState extends State<MyHomePage>
                       ),
                     ),
                     TwemojiTextSpan(
-                      text:
-                          '$_emojis\nTwemojiFormat.png\n\n',
+                      text: '$_emojis\nTwemojiFormat.png\n\n',
                       twemojiFormat: TwemojiFormat.png,
                       style: const TextStyle(
                         color: Colors.black,

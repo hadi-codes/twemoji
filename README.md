@@ -5,7 +5,7 @@
 
 Based on [jdecked's fork of twemoji (v14.1.2)](https://github.com/jdecked/twemoji)
 
-<img src="art/1.png" width=270>
+<img src="https://raw.githubusercontent.com/DynxstyGIT/twemoji_v2/main/art/1.png" width=270>
 
 ## Usage
 

@@ -18,7 +18,7 @@ enum FitzpatrickType {
 extension FitzpatrickTypeExtension on FitzpatrickType {
   /// Gets the corresponding unicode representation of that fitzpatrick type.
   String get unicode {
-    switch(this) {
+    switch (this) {
       case FitzpatrickType.type1_2:
         return '1f3fb';
       case FitzpatrickType.type3:

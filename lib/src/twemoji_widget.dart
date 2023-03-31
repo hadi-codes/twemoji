@@ -7,15 +7,15 @@ import 'package:twemoji_v2/twemoji_v2.dart';
 /// The format of the emoji image it can be [TwemojiFormat.png]
 /// 72*72 png or [TwemojiFormat.svg] svg by default.
 class Twemoji extends StatelessWidget {
-  const Twemoji({
-    Key? key,
-    required this.emoji,
-    this.height,
-    this.width,
-    this.fit,
-    this.twemojiFormat = TwemojiFormat.svg,
-    this.fitzpatrickTypes = FitzpatrickType.values
-  }) : super(key: key);
+  const Twemoji(
+      {Key? key,
+      required this.emoji,
+      this.height,
+      this.width,
+      this.fit,
+      this.twemojiFormat = TwemojiFormat.svg,
+      this.fitzpatrickTypes = FitzpatrickType.values})
+      : super(key: key);
 
   /// The emoji as a string. When multiple emojis are passed, this will
   /// simply just display the last one.
