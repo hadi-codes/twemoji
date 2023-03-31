@@ -1,3 +1,11 @@
+# 0.5.0
+- Upgraded to Twemoji 14.1.2
+- Switched from `RichText` to `Text.rich` for `TwemojiText` (to, e.g., respect the devices' `textScaleFactor`)
+- Added many new options to `TwemojiText`
+- Overhauled some documentation
+- Introduced `FitzpatrickType`
+- Updated example
+
 # 0.4.3
 - updated emoji regex
 - improved emojiToUnicode method

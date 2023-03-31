@@ -1,6 +1,6 @@
 name: twemoji_v2
-description: Twitter Emojis for Flutter, this package supports svg and png 72x72 emojis
-version: 0.4.3
+description: Twemoji for Flutter based on Twemoji 14.1.2 - Supports SVG & 72x72px PNGs
+version: 0.5.0
 homepage: https://github.com/DynxstyGIT/twemoji_v2
 
 environment:
