@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:twemoji_v2/twemoji.dart';
-
-import 'fitzpatrick_type.dart';
+import 'package:twemoji_v2/twemoji_v2.dart';
 
 /// A text widget which renders emojis as twemojis. This utilizes [Text.rich] in
 /// combination with [TwemojiTextSpan].

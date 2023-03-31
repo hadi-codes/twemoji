@@ -1,7 +1,7 @@
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
-import 'package:twemoji_v2/twemoji.dart';
+import 'package:twemoji_v2/twemoji_v2.dart';
 
 void main() {
   runApp(const MyApp());

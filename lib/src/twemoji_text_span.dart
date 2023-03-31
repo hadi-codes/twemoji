@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:twemoji_v2/twemoji.dart';
-
-import 'fitzpatrick_type.dart';
+import 'package:twemoji_v2/twemoji_v2.dart';
 
 /// A [TextSpan] that renders emojis as twemojis.
 class TwemojiTextSpan extends TextSpan {
@@ -14,7 +12,8 @@ class TwemojiTextSpan extends TextSpan {
     double emojiFontMultiplier = 1,
   }) : super(
           style: style,
-          children: _parse(style, text, twemojiFormat, fitzpatrickTypes, emojiFontMultiplier)
+          children: _parse(
+              style, text, twemojiFormat, fitzpatrickTypes, emojiFontMultiplier)
             ..addAll(children ?? []),
         );
 

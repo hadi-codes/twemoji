@@ -3,7 +3,7 @@
 import 'dart:io';
 import 'package:characters/src/extensions.dart';
 import 'package:io/io.dart';
-import 'package:twemoji_v2/twemoji.dart';
+import 'package:twemoji_v2/twemoji_v2.dart';
 import 'package:yaml/yaml.dart';
 
 Future<void> main(List<String> args) async {
